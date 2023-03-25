@@ -21,4 +21,15 @@ $(document).ready(function() {
     $("#hour-16 .description").val(localStorage.getItem("hour-16"));
     $("#hour-17 .description").val(localStorage.getItem("hour-17"));
 
+    var time = dayjs().format('hh');
+
+    function isBeforeTime() {
+        return dayjs().isBefore(time)
+    }
+    if (isBeforeTime()) {
+        $("row time-block").addClass("future");
+    } else {
+        $("row time-block").addClass("past");
+    }
+
 });

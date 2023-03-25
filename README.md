@@ -8,3 +8,9 @@ When you view the time blocks for that day, each time block is color-coded to in
 When you click into a time block, you can enter an event.
 When you click the save button for that time block, the text for that event is saved in local storage.
 When you refresh the page, the saved events persist.
+
+Deployed URL: https://batwood99.github.io/Work-Day-Scheduler/
+
+Screenshot of application:
+
+![screenshot](Screenshot.png)

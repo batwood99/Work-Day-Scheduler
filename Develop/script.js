@@ -3,6 +3,26 @@ $('#currentDay').text(today.format('dddd MMM D, YYYY'));
 
 $(document).ready(function() {
 
+    function updateHour() {
+        var currentHour = dayjs().hour();
+    
+        $(".time-block").each(function() {
+          var blockHour = parseInt($(this).attr("id").split("-")[1]);
+    
+          if (blockHour < currentHour) {
+            $(this).addClass("past");
+          } else if (blockHour === currentHour) {
+            $(this).addClass("present");
+          } else {
+            $(this).addClass("future");
+          }
+        });
+      }
+    
+      setInterval(updateHour, 60000);
+    
+      updateHour();
+
     $(".saveBtn").on("click", function() {
 
         var text = $(this).siblings(".description").val();
@@ -20,16 +40,5 @@ $(document).ready(function() {
     $("#hour-15 .description").val(localStorage.getItem("hour-15"));
     $("#hour-16 .description").val(localStorage.getItem("hour-16"));
     $("#hour-17 .description").val(localStorage.getItem("hour-17"));
-
-    var time = dayjs().format('hh');
-
-    function isBeforeTime() {
-        return dayjs().isBefore(time)
-    }
-    if (isBeforeTime()) {
-        $("row time-block").addClass("future");
-    } else {
-        $("row time-block").addClass("past");
-    }
 
 });
